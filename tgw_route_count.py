@@ -50,16 +50,12 @@ def main():
 
     # Exporting all the routes to the S3 bucket specified earlier in the code. The json output files will be
     # stored in /VPCTransitGateway/TransitGatewayRouteTables/ folder.
-
-
-
     print ("\n >>", datetime.now(), ": Exporting all the routes to the S3 bucket", s3_bucket + ":\n")
     for i in range (len (response_1['TransitGatewayRouteTables'])):
         response_2 = ec2.export_transit_gateway_routes(
             TransitGatewayRouteTableId = response_1['TransitGatewayRouteTables'][i]['TransitGatewayRouteTableId'],
             S3Bucket = s3_bucket
             )
-
         print ( datetime.now(), ": ",  response_2)
 
     # Extracting json file name with path from output of route export API call.
@@ -78,7 +74,6 @@ def main():
     # Deleting all S3 objects that were created by the script.
     all_objects = objects_path[1] + "/" + objects_path[2] + "/"
     print ("\n >>", datetime.now(), ": Deleting all objects from the path " + all_objects + " of the S3 bucket " + s3_bucket + ":\n")
-
     response_3 = s3.list_objects_v2(Bucket = s3_bucket, Prefix = all_objects)
     for file in response_3['Contents']:
         s3.delete_object(Bucket = s3_bucket, Key = file['Key'])
