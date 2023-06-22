@@ -1,7 +1,14 @@
 # TGW Route Count
   Python script that returns the total route cout of an AWS TGW. This script was initially forked from AWS own [repository](https://github.com/aws-samples/how-to-monitor-tgw-route-limits-using-serverless-architecture).
 
-## Prerequisites
+---
+
+**Disclaimer:** This script is currently community supported and not officially supported by Aviatrix.
+
+---
+
+
+## Prerequisites:
   * This script requires Boto3 to be installed.
   * The admin running the script should have read permissions to the TGW in question, as well as write access to a S3 bucket in the same region.
 
@@ -36,4 +43,4 @@
    ```
 
 ## Observations:
-  This script sole purpose is to check the TGW total rout count, for more information regarding the status of other TGW quota metrics, please check in the Aviatrix Controller or contact our support.
+  This script sole purpose is to check any AWS TGW total rout count. For more information regarding the status of your Aviatrix Orchestrated TGW, please check it in the Aviatrix Controller or contact Aviatrix support.
